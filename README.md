@@ -4,6 +4,8 @@
 
 ## Quick start
 
+The OpenTok Text Chat Accelerator Pack provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices. 
+
 This section shows you how to use the accelerator pack.
 
 ## Install
@@ -30,13 +32,13 @@ Otherwise, include the accelerator pack in your html:
 Click [here](https://www.npmjs.com/search?q=opentok-acc-pack) for a list of all OpenTok accelerator packs.
 
 
-### Exploring the code
+## Exploring the code
 
 The `TextChatAccPack` class in text-chat-acc-pack.js is the backbone of the text chat communication features for the app.
 
 This class sets up the text chat UI views and events, and provides functions for sending, receiving, and rendering individual chat messages.
 
-#### Initialization
+### Initialization
 
 The following `options` fields are used in the `TextChatAccPack` constructor:<br/>
 
@@ -87,7 +89,7 @@ Otherwise, the package will need to be in `global` scope to be initialized:
   ```
 
 
-#### TextChatAccPack Methods
+### TextChatAccPack Methods
 
 The `TextChat` component defines the following methods:
 
@@ -105,7 +107,7 @@ For example, this line determines whether the text chat accelerator pack is disp
   var displayed = _textChat.isDisplayed();
   ```
 
-#### Events
+### Events
 
 The `TextChat` component emits the following events:
 
@@ -132,4 +134,4 @@ The following code shows how to subscribe to these events:
       });
   ```
 
-One to one sample app using the Accelerator TextChat with best-practices for Web (https://github.com/opentok/textchat-acc-pack).
+##One to one sample app using the Accelerator TextChat with best-practices for Web (https://github.com/opentok/textchat-acc-pack).
