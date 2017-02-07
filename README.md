@@ -1,4 +1,4 @@
-![logo](../tokbox-logo.png)
+![logo](tokbox-logo.png)
 
 # OpenTok Text Chat Accelerator Pack for JavaScript<br/>Version 2.0.0
 
