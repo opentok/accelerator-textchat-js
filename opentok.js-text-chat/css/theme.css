@@ -1,0 +1,865 @@
+.ots-widget-wrapper div,
+.ots-widget-wrapper span,
+.ots-widget-wrapper object,
+.ots-widget-wrapper iframe,
+.ots-widget-wrapper h1,
+.ots-widget-wrapper h2,
+.ots-widget-wrapper h3,
+.ots-widget-wrapper h4,
+.ots-widget-wrapper h5,
+.ots-widget-wrapper h6,
+.ots-widget-wrapper p,
+.ots-widget-wrapper blockquote,
+.ots-widget-wrapper pre,
+.ots-widget-wrapper abbr,
+.ots-widget-wrapper address,
+.ots-widget-wrapper cite,
+.ots-widget-wrapper code,
+.ots-widget-wrapper del,
+.ots-widget-wrapper dfn,
+.ots-widget-wrapper em,
+.ots-widget-wrapper img,
+.ots-widget-wrapper ins,
+.ots-widget-wrapper kbd,
+.ots-widget-wrapper q,
+.ots-widget-wrapper samp,
+.ots-widget-wrapper small,
+.ots-widget-wrapper strong,
+.ots-widget-wrapper sub,
+.ots-widget-wrapper sup,
+.ots-widget-wrapper var,
+.ots-widget-wrapper b,
+.ots-widget-wrapper i,
+.ots-widget-wrapper dl,
+.ots-widget-wrapper dt,
+.ots-widget-wrapper dd,
+.ots-widget-wrapper ol,
+.ots-widget-wrapper ul,
+.ots-widget-wrapper li,
+.ots-widget-wrapper fieldset,
+.ots-widget-wrapper form,
+.ots-widget-wrapper label,
+.ots-widget-wrapper legend,
+.ots-widget-wrapper table,
+.ots-widget-wrapper caption,
+.ots-widget-wrapper tbody,
+.ots-widget-wrapper tfoot,
+.ots-widget-wrapper thead,
+.ots-widget-wrapper tr,
+.ots-widget-wrapper th,
+.ots-widget-wrapper td,
+.ots-widget-wrapper article,
+.ots-widget-wrapper aside,
+.ots-widget-wrapper canvas,
+.ots-widget-wrapper details,
+.ots-widget-wrapper figcaption,
+.ots-widget-wrapper figure,
+.ots-widget-wrapper footer,
+.ots-widget-wrapper header,
+.ots-widget-wrapper hgroup,
+.ots-widget-wrapper menu,
+.ots-widget-wrapper nav,
+.ots-widget-wrapper section,
+.ots-widget-wrapper summary,
+.ots-widget-wrapper time,
+.ots-widget-wrapper mark,
+.ots-widget-wrapper audio,
+.ots-widget-wrapper video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline
+}
+
+.ots-widget-wrapper body {
+  line-height: 1
+}
+
+.ots-widget-wrapper article,
+.ots-widget-wrapper aside,
+.ots-widget-wrapper details,
+.ots-widget-wrapper figcaption,
+.ots-widget-wrapper figure,
+.ots-widget-wrapper footer,
+.ots-widget-wrapper header,
+.ots-widget-wrapper hgroup,
+.ots-widget-wrapper menu,
+.ots-widget-wrapper nav,
+.ots-widget-wrapper section {
+  display: block
+}
+
+.ots-widget-wrapper nav ul {
+  list-style: none
+}
+
+.ots-widget-wrapper blockquote,
+.ots-widget-wrapper q {
+  quotes: none
+}
+
+.ots-widget-wrapper blockquote:before,
+.ots-widget-wrapper blockquote:after,
+.ots-widget-wrapper q:before,
+.ots-widget-wrapper q:after {
+  content: '';
+  content: none
+}
+
+.ots-widget-wrapper a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline
+}
+
+.ots-widget-wrapper ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none
+}
+
+.ots-widget-wrapper mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold
+}
+
+.ots-widget-wrapper del {
+  text-decoration: line-through
+}
+
+.ots-widget-wrapper abbr[title],
+.ots-widget-wrapper dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help
+}
+
+.ots-widget-wrapper table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+.ots-widget-wrapper hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0
+}
+
+.ots-widget-wrapper input,
+.ots-widget-wrapper select {
+  vertical-align: middle
+}
+
+.ots-widget-wrapper a,
+.ots-widget-wrapper button {
+  outline: 0;
+  border: 0
+}
+
+.ots-widget-wrapper a:hover,
+.ots-widget-wrapper a:focus,
+.ots-widget-wrapper button:hover,
+.ots-widget-wrapper button:focus {
+  outline: 0
+}
+
+
+.ots-widget-wrapper {
+  font-family: helvetica, arial, sans-serif;
+  color: #343c3e;
+  font-weight: normal
+}
+
+.ots-widget-wrapper h1,
+.ots-widget-wrapper h2,
+.ots-widget-wrapper h3,
+.ots-widget-wrapper h4,
+.ots-widget-wrapper h5,
+.ots-widget-wrapper h6,
+.ots-widget-wrapper .h1,
+.ots-widget-wrapper .h2,
+.ots-widget-wrapper .h3,
+.ots-widget-wrapper .h4 {
+  font-family: helvetica, arial, sans-serif;
+  color: #343c3e;
+  font-weight: normal;
+  font-weight: 700
+}
+
+
+.ots-widget-wrapper {
+  box-sizing: border-box
+}
+
+.ots-widget-wrapper *,
+.ots-widget-wrapper *:before,
+.ots-widget-wrapper *:after {
+  box-sizing: inherit
+}
+
+.ots-widget-wrapper .ots-start-call {
+  width: auto;
+  height: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: url('../images/mask/mask.png') center center;
+  background-size: cover;
+  padding: 130px 0
+}
+
+.ots-widget-wrapper .ots-start-call .btn-start-call {
+  width: 128px;
+  height: 42px;
+  color: #fff;
+  font-size: 14px;
+  background: #259de8;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto
+}
+
+.ots-widget-wrapper .ots-feed-wrap {
+  position: relative
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-recording-label {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  text-align: right;
+  font-size: 14px;
+  color: #666
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-recording-label:before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin-right: 5px;
+  background: #cf2027
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-recording-label em {
+  font-style: normal;
+  color: #333
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video {
+  min-height: 376px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: url('../images/mask/mask.png') center center;
+  background-size: cover
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video .ots-feed-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  -webkit-transform: rotate(0.000001deg);
+  overflow: hidden;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video img {
+  width: 100%
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video .ots-feed-holder {
+  position: absolute;
+  width: 100%;
+  height: 100%
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video .ots-feed-holder img {
+  width: 100%
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video .ots-feed-main-video-controls {
+  position: absolute;
+  top: 15px;
+  left: 15px
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-feed-main-video .ots-feed-main-video-controls button {
+  display: block;
+  background-color: transparent;
+  margin-bottom: 6px;
+  border: 0
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen {
+  position: fixed;
+  z-index: 999;
+  top: 20px;
+  right: 20px;
+  width: 550px;
+  height: 400px;
+  padding: 0
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen .ots-feed-mask img {
+  display: none
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen .ots-feed-call-controls {
+  -webkit-justify-content: center;
+  justify-content: center
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen .ots-feed-call-controls button {
+  margin: 0 5px
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen .ots-feed-call-controls button.ots-icon-full-screen {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  border: 0
+}
+
+.ots-widget-wrapper .ots-feed-wrap .ots-fullscreen .ots-feed-call-controls button.ots-icon-full-screen:before {
+  content: "minimize screen";
+  color: #fff;
+  position: absolute;
+  width: 96px;
+  right: 100%;
+  top: 18px
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 116px;
+  height: 100px;
+  background: url('../images/mask/mask.png') center center;
+  background-size: cover;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  transition: all 1s ease
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video .ots-feed-mask {
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  -webkit-transform: rotate(0.000001deg);
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video.ots-sec-cover {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video.ots-sec-cover .ots-feed-mask {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video .ots-feed-secondary-video-controls {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video .ots-feed-secondary-video-controls button {
+  display: block;
+  background-color: transparent;
+  margin: 8px 0 0 8px;
+  border: 0
+}
+
+.ots-widget-wrapper .ots-feed-secondary-video:hover .ots-feed-secondary-video-controls {
+  opacity: 1
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting,
+.ots-widget-wrapper .ots-feed-call-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 8px 0;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting button,
+.ots-widget-wrapper .ots-feed-call-controls button {
+  width: 52px;
+  height: 52px;
+  display: inline-block;
+  background-color: transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.3)
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting button.disabled,
+.ots-widget-wrapper .ots-feed-call-controls button.disabled {
+  cursor: not-allowed;
+  opacity: .5
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting button:hover,
+.ots-widget-wrapper .ots-feed-call-controls button:hover,
+.ots-widget-wrapper .ots-feed-call-waiting button.active,
+.ots-widget-wrapper .ots-feed-call-controls button.active {
+  border-width: 1px;
+  border-style: solid;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting {
+  bottom: 68px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.7)
+}
+
+.ots-widget-wrapper .ots-feed-call-waiting span {
+  line-height: 30px;
+  color: #fff;
+  font-weight: 300
+}
+
+.ots-widget-wrapper .ots-widget-extras {
+  position: relative;
+  margin-top: 20px;
+  border: 1px solid #c6c6c6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-header {
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 28px;
+  font-size: 13px;
+  color: #9f9f9f;
+  border-bottom: 1px solid #c6c6c6;
+  background: #f2f2f2;
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-topleft: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 2px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box
+}
+
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder {
+  height: 365px;
+  overflow: hidden;
+  overflow-y: scroll
+}
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder.has-alert {
+  padding-top: 30px;
+}
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-messages-alert {
+  position: relative;
+  padding: 30px;
+  min-height: 65px;
+  background: rgba(248, 231, 28, 0.25);
+  margin: 25px;
+  text-align: center;
+  color: #ad7212;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item {
+  position: relative;
+  padding: 0 0 0 50px;
+  margin: 40px 25px 10px 20px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item .ots-user-name-initial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #b3b3b3;
+  color: #fff;
+  font-size: 24px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item .ots-item-text {
+  position: relative;
+  padding: 12px;
+  min-height: 65px;
+  background: #f2f2f2;
+  margin-left: 14px;
+  color: #7c7c7c;
+  font-size: 15px;
+  line-height: 1.2;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item .ots-item-text:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 14px 14px 0;
+  border-color: transparent #f2f2f2 transparent transparent
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item .ots-item-text span {
+  display: block;
+  margin-bottom: 6px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item .ots-item-timestamp {
+  position: absolute;
+  top: -18px;
+  right: 20px;
+  color: #b3b3b3;
+  font-size: 12px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item.ots-message-sent {
+  padding: 0 50px 0 0;
+  margin: 40px 20px 10px 25px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item.ots-message-sent .ots-user-name-initial {
+  left: inherit;
+  right: 0;
+  background: #259de8
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item.ots-message-sent .ots-item-text {
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -moz-border-radius-topleft: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-left: 0;
+  margin-right: 14px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item.ots-message-sent .ots-item-text:before {
+  left: inherit;
+  right: -12px;
+  border-width: 14px 14px 0 0;
+  border-color: #f2f2f2 transparent transparent transparent
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-message-item.ots-message-sent .ots-item-timestamp {
+  right: 80px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  border-top: 1px solid #c6c6c6;
+  padding-right: 70px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box input[type="text"],
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: 0;
+  padding: 25px 25px 0;
+  font-size: 16px;
+  resize: none
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 69px;
+  background-color: #f2f2f2;
+  border-left: 1px solid #c6c6c6
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box button:hover {
+  background-color: #259de8
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-send-message-box .ots-character-count {
+  position: absolute;
+  bottom: -18px;
+  right: 0;
+  color: #cf2027;
+  font-size: 12px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-user-prof-info {
+  width: auto;
+  height: 430px;
+  padding: 32px 46px
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-user-prof-info span {
+  display: block;
+  margin-bottom: 10px;
+  color: #5f5a5a
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-user-prof-info span em {
+  color: #867f7f;
+  font-style: normal
+}
+
+.ots-widget-wrapper .ots-widget-extras .ots-user-prof-info hr {
+  margin: 36px 0
+}
+
+.ots-widget-wrapper .ots-feed-alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 70px;
+  text-align: center
+}
+
+.ots-widget-wrapper .ots-feed-alert .network-error {
+  background-image: url(../images/alerts/network-error.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),
+only screen and (min--moz-device-pixel-ratio:1.5),
+only screen and (min-device-pixel-ratio:1.5) {
+  .ots-widget-wrapper .ots-feed-alert .network-error {
+    background-image: url(../images/alerts/network-error@2x.png);
+    background-size: 78px 62px
+  }
+}
+
+.ots-widget-wrapper .ots-feed-alert .connection-error {
+  background-image: url(../images/alerts/connection-error.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),
+only screen and (min--moz-device-pixel-ratio:1.5),
+only screen and (min-device-pixel-ratio:1.5) {
+  .ots-widget-wrapper .ots-feed-alert .connection-error {
+    background-image: url(../images/alerts/connection-error@2x.png);
+    background-size: 209px 90px
+  }
+}
+
+.ots-widget-wrapper .ots-feed-alert .customErrorMessage {
+  color: white;
+  line-height: 50px;
+  padding: 10px
+}
+
+
+
+.ots-widget-wrapper .ots-feed-alert .ots-reconect-error {
+  position: absolute;
+  height: 70px;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -35px
+}
+
+.ots-widget-wrapper .ots-feed-alert .ots-reconect-error span,
+.ots-widget-wrapper .ots-feed-alert .ots-reconect-error .ots-btn {
+  display: block;
+  margin: 0 auto
+}
+
+.ots-widget-wrapper .ots-feed-alert .ots-reconect-error span {
+  color: #b3b3b3;
+  font-size: 14px;
+  margin-bottom: 20px
+}
+
+.ots-widget-wrapper .ots-feed-alert .ots-reconect-error .ots-btn {
+  width: 128px;
+  height: 42px;
+  color: #fff;
+  font-size: 14px;
+  background: #259de8;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+.hidden {
+  display: none !important
+}
+
+.ots-icon-set-main .btn-start-call,
+.ots-icon-set-main .ots-message-sent .ots-user-name-initial,
+.ots-icon-set-main .ots-send-message-box button:hover {
+  background-color: #259de8
+}
+
+
+.ots-icon-set-alt .btn-start-call,
+.ots-icon-set-alt .ots-message-sent .ots-user-name-initial,
+.ots-icon-set-alt .ots-send-message-box button:hover {
+  background-color: #52acbd
+}
+
+
+.ots-icon-check {
+  background-image: url(https://assets.tokbox.com/solutions/images/text-chat-check.png);
+  background-repeat: no-repeat;
+  background-position: center center
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),
+only screen and (min--moz-device-pixel-ratio:1.5),
+only screen and (min-device-pixel-ratio:1.5) {
+  .ots-icon-check {
+    background-image: url(https://assets.tokbox.com/solutions/images/text-chat-check@2x.png);
+    background-size: 27px 21px
+  }
+}

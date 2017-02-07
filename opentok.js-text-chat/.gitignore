@@ -1,0 +1,10 @@
+node_modules
+.idea/
+dist/*
+!dist/opentok-text-chat.js
+!dist/opentok-text-chat.min.js
+src/opentok-one-to-one-communication.js
+src/opentok-solutions-logging.js
+
+# OSX files
+.DS_Store
