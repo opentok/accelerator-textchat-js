@@ -1,6 +1,6 @@
 ![logo](tokbox-logo.png)
 
-# OpenTok Text Chat Accelerator Pack for JavaScript<br/>Version 2.0.0
+# Accelerator TextChat for Javascript<br/>Version 2.0.0
 
 ## Quick start
 
@@ -134,4 +134,4 @@ The following code shows how to subscribe to these events:
       });
   ```
 
-### One to one sample app using the Accelerator TextChat with best-practices for Web (https://github.com/opentok/textchat-acc-pack).
+### One to one sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/textchat-acc-pack).
