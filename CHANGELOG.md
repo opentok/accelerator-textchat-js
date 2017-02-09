@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 --------------------------------------
 
 
-####[2.0.0]
+####[1.0.23]
 
 [ADDED] AppendControl option
 
 [ADDED]	DeliverUnsentMessages callback
+
+[ADDED] opentok-solutions-css for styling
+
+[ADDED] WaitingMessage option
 
 
 ####[1.0.0]
