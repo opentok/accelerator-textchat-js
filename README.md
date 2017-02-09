@@ -97,7 +97,7 @@ The `TextChat` component defines the following methods:
 For example, this line determines whether the text chat accelerator pack is displayed:
 
   ```javascript
-  var displayed = _textChat.isDisplayed();
+  const displayed = textChat.isDisplayed();
   ```
 
 ### Events
