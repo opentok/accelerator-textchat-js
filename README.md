@@ -1,6 +1,6 @@
 ![logo](tokbox-logo.png)
 
-# Accelerator TextChat for Javascript<br/>Version 2.0.0
+# Accelerator TextChat for Javascript<br/>Version 1.0.+
 
 ## Quick start
 
