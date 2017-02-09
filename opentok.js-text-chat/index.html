@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OpenTok TextChat demo</title>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/widget.css" />
+    <script src="https://assets.tokbox.com/otkanalytics.js"></script>
+    <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+    <script src="../sample-app/public/js/components/opentok-text-chat.js"></script>
+  </head>
+  <body>
+    <script>
+      // Use your OpenTok dashboard [1] to generate projects a sessionId and
+      // a couple of tokens for Alice and Bob. Don't forget to include data with
+      // the names for Alice and Bob.
+      //
+      // [1] https://dashboard.tokbox.com/keys/220675
+      var sessionId = '';
+      var tokenAlice = '';
+      var tokenBob = '';
+
+      // Add here your API key
+      var apiKey = '';
+    
+      // Although you need a initialized session, the ChatWidget does not need
+      // this session to be connected. It will connect the chat to the session
+      // automatically once the session connects.
+      var session = OT.initSession(apiKey, sessionId);
+      var chatWidget = new OTSolution.TextChat.ChatUI({
+        session: session,
+        container: '#chat'
+      });
+    </script>
+  </body>
+</html>
