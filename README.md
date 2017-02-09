@@ -134,4 +134,4 @@ The following code shows how to subscribe to these events:
       });
   ```
 
-### One to one sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/textchat-acc-pack).
+### One to one sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/one-to-one-textchat-sample-apps).
