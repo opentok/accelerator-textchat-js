@@ -12,7 +12,6 @@ before_script:
   karma-coverage karma-firefox-launcher karma-html2js-preprocessor mocha karma-mocha
   karma-phantomjs-launcher load-grunt-tasks
 script:
-- cd opentok.js-text-chat
 - grunt karma:prod
 notifications:
   slack:
