@@ -11,6 +11,7 @@ before_script:
 - npm install --save-dev chai grunt karma karma-chai grunt-karma karma-chrome-launcher
   karma-coverage karma-firefox-launcher karma-html2js-preprocessor mocha karma-mocha
   karma-phantomjs-launcher load-grunt-tasks
+- npm install -save-dev opentok-solutions-logging
 script:
 - grunt karma:prod
 notifications:
