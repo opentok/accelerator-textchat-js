@@ -1,10 +1,11 @@
 ![logo](tokbox-logo.png)
 
 # Accelerator TextChat for Javascript<br/>Version 1.0.+
+[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-textchat-js)
 
 ## Quick start
 
-The OpenTok Text Chat Accelerator Pack provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices. 
+The OpenTok Text Chat Accelerator Pack provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices.
 
 This section shows you how to use the accelerator pack.
 
