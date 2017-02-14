@@ -1,9 +1,9 @@
 ![logo](tokbox-logo.png)
 
-[![Build Status](https://travis-ci.org/opentok/accelerator-text-chat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-text-chat-js)
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](./README.md)
+[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-textchat-js)
+[![GitHub release](https://img.shields.io/github/release/opentok/accelerator-textchat-js.svg)](./README.md)
 [![license MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](./.github/LICENSE)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/opentok-text-chat)
+[![npm](https://img.shields.io/npm/v/opentok-text-chat.svg)](https://www.npmjs.com/package/opentok-text-chat)
 
 -----
 
