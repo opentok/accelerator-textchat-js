@@ -1,6 +1,13 @@
 ![logo](tokbox-logo.png)
 
-# Accelerator TextChat for Javascript<br/>Version 1.0.+
+[![Build Status](https://travis-ci.org/opentok/accelerator-text-chat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-text-chat-js)
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](./README.md)
+[![license MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](./.github/LICENSE)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/opentok-text-chat)
+
+-----
+
+# Accelerator TextChat for Javascript<br/>
 
 ## Quick start
 
