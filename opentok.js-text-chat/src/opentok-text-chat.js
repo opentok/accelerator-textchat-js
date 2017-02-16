@@ -34,7 +34,7 @@
 
   var _logEventData = {
     // vars for the analytics logs. Internal use
-    clientVersion: 'js-vsol-2.0.0',
+    clientVersion: 'js-vsol-1.0.24',
     componentId: 'textChatAccPack',
     name: 'guidTextChatAccPack',
     actionInitialize: 'Init',
