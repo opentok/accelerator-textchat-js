@@ -1,4 +1,13 @@
 module.exports = function(config) {
+    var customLaunchers = {
+        sl_chrome: {
+          base: 'SauceLabs',
+          browserName: 'chrome',
+          platform: 'OS X 10.11',
+          version: '56'
+        }
+    };
+
     var configuration = {
         basePath: '',
         frameworks: ['mocha'],
@@ -13,12 +22,11 @@ module.exports = function(config) {
             'test/*.html': ['html2js'],
             'src/*.js': ['coverage']
         },
-        reporters: ['progress', 'coverage'],
+        reporters: ['progress', 'coverage', 'dots', 'saucelabs'],
         port: 9877,
         colors: true,
         autoWatch: true,
         browsers: [],
-        browserNoActivityTimeout: 20000,
         singleRun: true,
         logLevel: config.LOG_INFO,
         coverageReporter: {
@@ -32,12 +40,11 @@ module.exports = function(config) {
                 { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
             ]
         },
-        customLaunchers: {
-            Chrome_travis_ci: {
-              base: 'Chrome',
-              flags: ['--no-sandbox']
-            }
-        }
+        sauceLabs: {
+          testName: 'Accelerator Text Chat Unit Tests'
+        },
+        customLaunchers: customLaunchers,
+        browsers: Object.keys(customLaunchers),
     };
 
     if (process.env.TRAVIS) {

@@ -32,7 +32,7 @@ module.exports = function(grunt) {
           },
           prod: {
               singleRun: true,
-              browsers: ['Chrome_travis_ci']
+              browsers: ['sl_chrome']
           }
       }
     });
