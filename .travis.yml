@@ -2,9 +2,9 @@ language: node_js
 node_js:
 - '4.4'
 before_install:
-- export CHROME_BIN=chromium-browser
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+#- export CHROME_BIN=chromium-browser
+#- export DISPLAY=:99.0
+#- sh -e /etc/init.d/xvfb start
 before_script:
 - cd opentok.js-text-chat
 - npm install

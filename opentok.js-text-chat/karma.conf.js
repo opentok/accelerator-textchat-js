@@ -41,7 +41,9 @@ module.exports = function(config) {
             ]
         },
         sauceLabs: {
-          testName: 'Accelerator Text Chat Unit Tests'
+          testName: 'Accelerator Text Chat Unit Tests',
+          tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+          startConnect: false
         },
         customLaunchers: customLaunchers,
         browsers: Object.keys(customLaunchers),
