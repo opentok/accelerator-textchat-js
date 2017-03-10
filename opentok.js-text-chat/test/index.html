@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TextChat AccPack Tests</title>
+    <link rel="stylesheet" href="../node_modules/grunt-blanket-mocha/node_modules/mocha/mocha.css">
+</head>
+<body>
+  <div id="mocha">
+    <script>mocha.setup('bdd')</script>
+    <script src="../src/opentok-text-chat.js" data-cover></script>
+    <script src="../test/opentok-text-chat-test.js"></script>
+    <script>
+    if (window.PHANTOMJS) {
+        blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
+    }
+    else {
+        mocha.run();
+    }
+    </script>
+  </div>
+</body>
+</html>

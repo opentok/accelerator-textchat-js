@@ -125,5 +125,5 @@ otCore.on('messageReceived', event =>  . . .)
 otCore.on('messageSent', event =>  . . .)
 otCore.on('errorSendingMessage', error =>  . . .)
 ```
+### Multiparty video communication sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/accelerator-sample-apps-js).
 
-####*One-to-one sample app using the Accelerator TextChat with best-practices for Javascript is available [here](https://github.com/opentok/one-to-one-textchat-sample-apps).*
