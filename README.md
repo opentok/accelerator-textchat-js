@@ -52,11 +52,13 @@ The following `options` fields are used in the `TextChatAccPack` constructor:<br
 | Feature        | Field  |
 | ------------- | ------------- |
 | Set the session. | `session`  |
+| Set the id and name for the user. | `sender`  |
 | Set the chat container. | `textChatContainer`  |
 | Sets the position of the element that displays the information for the character count within the UI. | `controlsContainer`  |
-| Set the maximum chat text length. | `limitCharacterMessage`  |
+| Set the maximum message length. | `limitCharacterMessage`  |
 | Set the sender alias and the sender ID of the outgoing messages. | `sender`  |
 | Set the text chat container to automatically be displayed. | `alwaysOpen`  |
+| Custom message to display while waiting for other users to join. | `waitingMessage`  |
 
 
 If you're using a bundler like webpack or Browserify, you can install the the text chat component with [npm](https://www.npmjs.com/package/opentok-text-chat), and import into your application:
@@ -70,29 +72,19 @@ If you're using a bundler like webpack or Browserify, you can install the the te
 Otherwise, the package will need to be in `global` scope to be initialized:
 
   ```javascript
-      var _options = {
-        textChat: {
-          sender: {
-            alias: 'David',
-          },
-          limitCharacterMessage: 160,
-          controlsContainer: '#feedControls',
-          textChatContainer: '#chatContainer',
-          alwaysOpen: true
-        }
-      };
+  const textChatOptions = {
+   session: session,
+   sender: {
+     id: 'myCustomIdentifier',
+     alias: 'David',
+   },
+   limitCharacterMessage: 160,
+   controlsContainer: '#feedControls',
+   textChatContainer: '#chatContainer',
+   alwaysOpen: true
+ };
 
-      var textChatOptions = {
-       accPack: _this,
-       session: _session,
-       sender: _options.textChat.sender,
-       limitCharacterMessage: _options.textChat.limitCharacterMessage,
-       controlsContainer: _options.textChat.controlsContainer,
-       textChatContainer: _options.textChat.textChatContainer,
-       alwaysOpen: _options.textChat.alwaysOpen
-     };
-
-     _components.textChat = new TextChatAccPack(textChatOptions);
+ const textChat = new TextChatAccPack(textChatOptions);
   ```
 
 
@@ -106,12 +98,13 @@ The `TextChat` component defines the following methods:
 | `hideTextChat()` | Hide the text chat view.  |
 | `isDisplayed()` | Determines if the text chat accelerator pack is displayed.  |
 | `isEnabled()` | Determines if the text chat accelerator pack is enabled.  |
+| `deliverUnsentMessages()` | Deliver all prior messages to new participants.  |
 
 
 For example, this line determines whether the text chat accelerator pack is displayed:
 
   ```javascript
-  var displayed = _textChat.isDisplayed();
+  const displayed = textChat.isDisplayed();
   ```
 
 ### Events
@@ -125,20 +118,12 @@ The `TextChat` component emits the following events:
 | `errorSendingMessage ` | An error occurred when sending a message.  |
 
 
-The following code shows how to subscribe to these events:
+The following code shows how to subscribe to these events using [opentok-accelerator-core](https://github.com/opentok/accelerator-core-js):
 
-  ```javascript
-      _accPack.registerEventListener('messageReceived', function() {
-        . . .
-      });
-
-      _accPack.registerEventListener('messageSent', function() {
-        . . .
-      });
-
-      _accPack.registerEventListener('errorSendingMessage', function() {
-        . . .
-      });
-  ```
-
+```javascript
+otCore.on('messageReceived', event =>  . . .)
+otCore.on('messageSent', event =>  . . .)
+otCore.on('errorSendingMessage', error =>  . . .)
+```
 ### Multiparty video communication sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/accelerator-sample-apps-js).
+
