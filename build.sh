@@ -17,8 +17,6 @@ if [ "$task" == "-d" ]; then
 		cd opentok.js-text-chat
 		npm i
 		npm update
-  	cp -v node_modules/opentok-one-to-one-communication/opentok-one-to-one-communication.js src/opentok-one-to-one-communication.js
-		cp -v node_modules/opentok-solutions-logging/dist/opentok-solutions-logging.js src/opentok-solutions-logging.js
 		gulp dist
 		cd dist
     gulp zip
