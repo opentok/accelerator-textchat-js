@@ -41,7 +41,7 @@ Click [here](https://www.npmjs.com/search?q=opentok-acc-pack) for a list of all 
 
 ## Exploring the code
 
-The `TextChatAccPack` class in text-chat-acc-pack.js is the backbone of the text chat communication features for the app.
+The `TextChatAccPack` class in `opentok-text-chat.js` is the backbone of the text chat communication features for the app.
 
 This class sets up the text chat UI views and events, and provides functions for sending, receiving, and rendering individual chat messages.
 
@@ -126,4 +126,3 @@ otCore.on('messageSent', event =>  . . .)
 otCore.on('errorSendingMessage', error =>  . . .)
 ```
 ### Multiparty video communication sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/accelerator-sample-apps-js).
-
