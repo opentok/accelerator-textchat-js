@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-PUBLIC="../../sample-app/public"
-LOGGING="../../sample-app/node_modules/opentok-solutions-logging/opentok-solutions-logging.js"
-
 task="$1"
 
 #Run unit tests
@@ -24,8 +21,6 @@ if [ "$task" == "-d" ]; then
 		cp -v node_modules/opentok-solutions-logging/dist/opentok-solutions-logging.js src/opentok-solutions-logging.js
 		gulp dist
 		cd dist
-    cp -v text-chat-acc-pack.js $PUBLIC/js/components/text-chat-acc-pack.js
-    cp -v theme.css $PUBLIC/css/theme.css
     gulp zip
 		exit 0
 	else
