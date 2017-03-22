@@ -57,8 +57,8 @@ module.exports = function(config) {
     };
 
     if (process.env.TRAVIS) {
-      configuration.customLaunchers = customLaunchers,
-      configuration.browsers = Object.keys(customLaunchers),
+      configuration.customLaunchers = customLaunchers;
+      configuration.browsers = Object.keys(customLaunchers);
     }
     config.set(configuration);
 };
