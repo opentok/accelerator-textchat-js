@@ -6,13 +6,10 @@ env:
 before_install:
 before_script:
 - npm install
-- npm install --save-dev chai grunt karma karma-chai grunt-karma karma-chrome-launcher
-  karma-coverage karma-firefox-launcher karma-html2js-preprocessor mocha karma-mocha
-  karma-phantomjs-launcher load-grunt-tasks karma-browserify babel-plugin-espower
-  babelify karma-sauce-launcher
+- npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage karma-firefox-launcher karma-html2js-preprocessor mocha karma-mocha karma-phantomjs-launcher karma-browserify babel-plugin-espower babelify karma-sauce-launcher
 - npm install -g --save-dev opentok-solutions-logging
 script:
-- grunt karma:prod
+- npm test
 notifications:
   slack:
     secure: CLKn9KgcZnSo/6pbRRlsCEiICcTOky+Kuf+gdHFz1b7hesEDhOVmAbK+mZR4tsc0h48xgcOXC30tkioL91a+o7B47yAI/pEaMHHw0gWQKqR4Ti7V2ueOGLBun/Ih/d82aBpPzwAudE9F3pt+5KgNlsbcgIzBAG/D/9Sc3xGFgrVSnaG+k+PN4HgjJNzc/OY8P3fGO5kz1skQ8tUxC3Q/50I6syWcN5q8O4u+lQThaAeQLHFrkFV7QnK2I+RCFDtM84yDMzyfIz+OmzxybzFSM74vXXIkHvNahXUKYd23T8tQXbPrqql/FkXLKZ9qAT1zx+GzFKHa5GfUyl9jtjv7JIlXciK+EUYRcZvxPESe0DEhvBod8d2gRO5DRdDcryBmI/aETjJKBrdyqY87D9YqzDVWEhOxtt+VlUND9L1cwUm/RhktGaV+jPWqU12MTUU7/XgGO4lum2b/Nj67jWJF/jNmfwS5wmly5oD3X1nm1ct+A37tMvCDTY7PeR0jWy3MKB8AcWktnTKx/zOdlNDWpQ9FjE8UxmQ0glfDU+CdL30fKV0974cvsbpYcG0H1AgVi6CHIll+o4iCr52z7J6DAgiwBDqmpzJMxVUCpig5Ttn6jL5IGaNcNIze7Dc9+gAkmXCgoXDhd6NQY7MkUSBWx0pzTR1UMD/WS6ef8h+Hp3Y=
