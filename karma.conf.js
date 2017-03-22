@@ -54,12 +54,11 @@ module.exports = function(config) {
           username: process.env.SAUCE_USERNAME,
           accessKey: process.env.SAUCE_ACCESS_KEY
         },
-        customLaunchers: customLaunchers,
-        browsers: Object.keys(customLaunchers),
     };
 
     if (process.env.TRAVIS) {
-      configuration.browsers = ['Chrome_travis_ci'];
+      configuration.customLaunchers = customLaunchers,
+      configuration.browsers = Object.keys(customLaunchers),
     }
     config.set(configuration);
 };
