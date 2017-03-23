@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "karma start"
+    "build-css": "npm-css css/theme.css -o dist/theme.css",
+    "build-js": "cp src/opentok-text-chat.js dist/ && uglifyjs src/opentok-text-chat.js -o dist/opentok-text-chat.min.js",
+    "test": "karma start",
+    "build": "mkdir -p dist && npm run build-js & npm run build-css"
   },
   "repository": {
     "type": "git",
@@ -37,9 +40,11 @@
     "karma-sinon": "^1.0.4",
     "merge-stream": "^1.0.0",
     "mocha": "^2.3.3",
+    "npm-css": "^0.2.3",
     "opentok-one-to-one-communication": "^1.0.6",
     "rimraf": "^2.4.3",
     "sinon": "^1.17.0",
+    "uglify-js": "^2.8.15",
     "yuidocjs": "^0.9.0"
   },
   "dependencies": {
