@@ -1,6 +1,5 @@
 node_modules
 .idea/
-dist/
 
 # OSX files
 .DS_Store

@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-css": "npm-css css/theme.css -o dist/theme.css",
+    "build-js": "cp src/opentok-text-chat.js dist/ && uglifyjs src/opentok-text-chat.js -o dist/opentok-text-chat.min.js",
+    "test": "karma start",
+    "build": "mkdir -p dist && npm run build-js & npm run build-css"
   },
   "repository": {
     "type": "git",
@@ -28,20 +31,6 @@
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.1.1",
-    "gulp": "^3.9.0",
-    "gulp-amd-optimizer": "^0.3.4",
-    "gulp-amdclean": "^1.1.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-docco": "0.0.4",
-    "gulp-if": "^2.0.0",
-    "gulp-import-css": "^0.1.2",
-    "gulp-inline-css": "^3.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.3",
-    "gulp-webserver": "^0.9.1",
-    "gulp-yuidoc": "^0.1.2",
-    "gulp-zip": "^3.2.0",
-    "jasmine": "latest",
     "karma": "^0.13.10",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -51,9 +40,11 @@
     "karma-sinon": "^1.0.4",
     "merge-stream": "^1.0.0",
     "mocha": "^2.3.3",
+    "npm-css": "^0.2.3",
     "opentok-one-to-one-communication": "^1.0.6",
     "rimraf": "^2.4.3",
     "sinon": "^1.17.0",
+    "uglify-js": "^2.8.15",
     "yuidocjs": "^0.9.0"
   },
   "dependencies": {
