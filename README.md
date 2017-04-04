@@ -1,42 +1,69 @@
-![logo](tokbox-logo.png)
+# OpenTok Accelerator TextChat for JavaScript <br/>
+[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-textchat-js) 
+[![npm](https://img.shields.io/npm/v/opentok-text-chat.svg)](https://www.npmjs.com/package/opentok-text-chat) 
+[![license MIT](https://img.shields.io/github/license/opentok/accelerator-textchat-js.svg)](./.github/LICENSE)
 
-[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-textchat-js)
-[![GitHub release](https://img.shields.io/github/release/opentok/accelerator-textchat-js.svg)](./README.md)
-[![license MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](./.github/LICENSE)
-[![npm](https://img.shields.io/npm/v/opentok-text-chat.svg)](https://www.npmjs.com/package/opentok-text-chat)
-
------
-
-# Accelerator TextChat for Javascript<br/>
+The OpenTok Text Chat Accelerator Pack for JavaScript provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices.
 
 ## Quick start
 
-The OpenTok Text Chat Accelerator Pack provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices.
-
 This section shows you how to use the accelerator pack.
 
-## Install
+### Prerequisites
+
+The dependencies for this library are listed in the `package.json`:
+
+- jquery.
+- kuende-livestamp.
+- moment.
+- opentok-solutions-logging.
+- underscore.
+
+
+### Installation
+
+Start by installing the dependencies:
 
 ```bash
 $ npm install --save opentok-text-chat
 ```
 
-If using browserify or webpack:
+#### Using a module bundler
+
+If using a bundler like browserify or webpack:
 
 ```javascript
 const textChat = require('opentok-text-chat');
 ```
 
-Otherwise, include the accelerator pack in your html:
+#### Without a module bundler
+
+If you are not using a module bundler, include the accelerator pack in your html as well as the installed dependencies:
 
 ```html
-<script src="../your/path/to/opentok-text-chat.js"></script>
+<script src="node_modules/opentok-text-chat/dist/opentok-text-chat.js"></script>
+<script src="node_modules/opentok-solutions-logging/dist/opentok-solutions-logging.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+<script src="your/path/to/underscore-min.js"></script>
+<script src="your/path/to/jquery.min.js"></script>
+<script src="your/path/to/moment.min.js"></script>
+<script src="your/path/to/livestamp.min.js"></script>
 ```
- . . . and it will be available in global scope as `TextChatAccPack`
+Also, as our [Sample Application](#sample-application) demonstrates, you can specify some of the requirements to be sourced from cloudfare:
 
------------------
+```javascript
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.min.js"></script>
+```
 
-Click [here](https://www.npmjs.com/search?q=opentok-acc-pack) for a list of all OpenTok accelerator packs.
+
+## Usage
+
+The text chat module will be available in global scope as `TextChatAccPack`
+
+_**NOTE**: Click [here](https://www.npmjs.com/search?q=opentok-acc-pack) for a list of all OpenTok accelerator packs._
 
 
 ## Exploring the code
@@ -125,4 +152,22 @@ otCore.on('messageReceived', event =>  . . .)
 otCore.on('messageSent', event =>  . . .)
 otCore.on('errorSendingMessage', error =>  . . .)
 ```
-### Multiparty video communication sample app using the Accelerator TextChat with best-practices for Javascript (https://github.com/opentok/accelerator-sample-apps-js).
+### Sample Application
+
+* **[Multiparty video communication sample app using the Accelerator TextChat with best-practices for Javascript](https://github.com/opentok/accelerator-sample-apps-js)**.
+
+## Contribute
+
+If you'd like to contribute to OpenTok Accelerator Pack development, please follow the guidelines in the [contributing files](/.github).
+
+
+## License
+
+This project is under the [MIT License](./LICENSE)
+
+
+# About OpenTok 
+
+![logo](./images/tokbox-logo.png)
+
+The OpenTok platform, developed by TokBox, makes it easy to embed high-quality interactive video, voice, messaging, and screen sharing into web and mobile apps. For more info on how OpenTok works, check out our [Core Concepts](https://tokbox.com/developer/guides/core-concepts/).
