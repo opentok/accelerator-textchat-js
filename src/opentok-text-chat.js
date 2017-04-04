@@ -34,7 +34,7 @@
 
   var _logEventData = {
     // vars for the analytics logs. Internal use
-    clientVersion: 'js-vsol-1.0.29',
+    clientVersion: 'js-vsol-x.y.z', // x.y.z filled by npm build script
     componentId: 'textChatAccPack',
     name: 'guidTextChatAccPack',
     actionInitialize: 'Init',
