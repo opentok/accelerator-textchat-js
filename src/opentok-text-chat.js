@@ -178,18 +178,16 @@
 
     var chatholder = $(_newMessages);
     chatholder.append(view);
-    _cleanComposer();
     chatholder[0].scrollTop = chatholder[0].scrollHeight;
 
   };
 
   var _handleMessageSent = function (data) {
+    _cleanComposer();
     if (_shouldAppendMessage(data)) {
       $('.ots-item-text').last().append(['<span>', data.message, '</span>'].join(''));
       var chatholder = $(_newMessages);
       chatholder[0].scrollTop = chatholder[0].scrollHeight;
-      _cleanComposer();
-
     } else {
       _renderChatMessage(_sender.id, _sender.alias, data.message, data.sentOn);
     }
