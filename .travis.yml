@@ -11,6 +11,7 @@ before_script:
   karma-browserify babel-plugin-espower babelify karma-sauce-launcher
 - npm install -g --save-dev opentok-solutions-logging
 script:
+- npm run build
 - npm test
 - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
     VERSION=$(jq '.version' package.json | sed -e 's/^"//' -e 's/"$//');
