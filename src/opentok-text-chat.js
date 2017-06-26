@@ -4,7 +4,7 @@
   /** Include external dependencies */
 
   var _;
-  var $;
+  var $
   var OTKAnalytics;
 
   if (typeof module === 'object' && typeof module.exports === 'object') {
