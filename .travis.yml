@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '4.4'
+- '10.16'
 env:
 - SAUCE_USERNAME=verticalsol
 before_install:
