@@ -26,7 +26,7 @@
   "author": "Aaron Rice <adrice727@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.3.0",
+    "chai": "^3.5.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.0",
@@ -35,6 +35,7 @@
     "karma": "^1.7.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^2.0.2",
     "karma-firefox-launcher": "^1.0.1",
     "karma-mocha": "^1.3.0",
     "karma-requirejs": "^0.2.2",
@@ -51,6 +52,8 @@
   },
   "dependencies": {
     "jquery": "^3.1.0",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-sauce-launcher": "^4.1.5",
     "kuende-livestamp": "^1.1.2",
     "moment": "^2.14.1",
     "opentok-solutions-logging": "^1.0.6",
