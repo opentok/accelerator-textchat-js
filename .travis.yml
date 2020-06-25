@@ -4,6 +4,8 @@ node_js:
 env:
 - SAUCE_USERNAME=verticalsol
 before_install:
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
 before_script:
 - npm install
 - npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage
