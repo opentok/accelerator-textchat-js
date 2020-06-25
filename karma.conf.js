@@ -2,7 +2,7 @@ module.exports = function(config) {
     var customLaunchers = {
       Chrome_travis_ci: {
         base: 'Chrome',
-        flags: ['--no-sandbox', '--disable-web-security',
+        flags: ['--disable-web-security',
           '--disable-gpu']
       }
     };
