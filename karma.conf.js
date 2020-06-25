@@ -1,10 +1,10 @@
 module.exports = function(config) {
     var customLaunchers = {
-        sl_chrome: {
-          base: 'SauceLabs',
-          browserName: 'chrome',
-          platform: 'latest'
-        }
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox', '--disable-web-security',
+        '--disable-gpu']
+      }
     };
 
     var configuration = {
