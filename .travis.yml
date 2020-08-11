@@ -6,9 +6,6 @@ env:
 before_install:
 before_script:
 - npm install
-- npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage
-  karma-firefox-launcher karma-html2js-preprocessor mocha karma-mocha karma-phantomjs-launcher
-  karma-browserify babel-plugin-espower babelify karma-sauce-launcher
 - npm install -g --save-dev opentok-solutions-logging
 script:
 - npm run build
