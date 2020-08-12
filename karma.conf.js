@@ -1,10 +1,7 @@
 module.exports = function (config) {
   var customLaunchers = {
     sl_chrome: {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X 10.11',
-      version: '56'
+      base: 'Chrome'
     }
   };
 
