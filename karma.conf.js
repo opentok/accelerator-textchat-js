@@ -7,7 +7,12 @@ module.exports = function (config) {
 
   var configuration = {
     plugins: [
-      'karma-mocha', 'karma-coverage', 'karma-html2js-preprocessor', 'karma-sauce-launcher', 'karma-chrome-launcher', 'karma-chai'
+      'karma-mocha',
+      'karma-coverage',
+      'karma-html2js-preprocessor',
+      'karma-sauce-launcher',
+      'karma-chrome-launcher',
+      'karma-chai'
     ],
     basePath: '',
     frameworks: ['mocha', 'chai'],
@@ -49,9 +54,7 @@ module.exports = function (config) {
     sauceLabs: {
       testName: 'Accelerator Text Chat Unit Tests',
       startConnect: false,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      username: process.env.SAUCE_USERNAME,
-      accessKey: process.env.SAUCE_ACCESS_KEY
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
     },
   };
 
