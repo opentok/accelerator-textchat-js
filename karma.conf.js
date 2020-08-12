@@ -1,7 +1,9 @@
 module.exports = function (config) {
   var customLaunchers = {
     sl_chrome: {
-      base: 'Chrome'
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      flags: ['--disable-setuid-sandbox', '--no-sandbox']
     }
   };
 
@@ -53,7 +55,6 @@ module.exports = function (config) {
     },
     sauceLabs: {
       testName: 'Accelerator Text Chat Unit Tests',
-      startConnect: false,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
     },
   };
