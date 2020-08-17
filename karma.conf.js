@@ -1,16 +1,14 @@
 module.exports = function(config) {
     var customLaunchers = {
-        sl_chrome: {
-          base: 'SauceLabs',
-          browserName: 'chrome',
-          platform: 'OS X 10.11',
-          version: '56'
-        }
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
     };
 
     var configuration = {
         plugins: [
-          'karma-mocha', 'karma-coverage', 'karma-html2js-preprocessor', 'karma-sauce-launcher', 'karma-chrome-launcher', 'karma-chai'
+          'karma-mocha', 'karma-coverage', 'karma-html2js-preprocessor', 'karma-chrome-launcher', 'karma-chai'
         ],
         basePath: '',
         frameworks: ['mocha', 'chai'],
@@ -31,7 +29,7 @@ module.exports = function(config) {
             'test/*.html': ['html2js'],
             'src/*.js': ['coverage']
         },
-        reporters: ['progress', 'coverage', 'dots', 'saucelabs'],
+        reporters: ['progress', 'coverage', 'dots'],
         port: 9877,
         colors: true,
         autoWatch: true,
@@ -48,11 +46,6 @@ module.exports = function(config) {
                 { type: 'lcov', subdir: 'report-lcov' },
                 { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
             ]
-        },
-        sauceLabs: {
-          testName: 'Accelerator Text Chat Unit Tests',
-          username: process.env.SAUCE_USERNAME,
-          accessKey: process.env.SAUCE_ACCESS_KEY
         },
     };
 
