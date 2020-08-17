@@ -1,6 +1,12 @@
 language: node_js
 node_js:
 - '10.16'
+services:
+- xvfb
+env:
+- SAUCE_USERNAME=opentok && 
+- SAUCE_ACCESS_KEY=8ee7278b-7d02-4eaa-9742-e51e924a73e3
+before_install:
 before_script:
 - npm install
 - npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage
