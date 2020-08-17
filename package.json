@@ -50,7 +50,6 @@
     "merge-stream": "^2.0.0",
     "mocha": "^8.1.1",
     "npm-css": "^0.2.3",
-    "opentok-one-to-one-communication": "^1.0.27",
     "replace": "^1.2.0",
     "rimraf": "^3.0.2",
     "sinon": "^9.0.2",

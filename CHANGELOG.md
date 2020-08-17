@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 
 [UPDATED] `appendControl` now allows controls to display when `alwaysOpen` is true
 
+[UPDATED] Updated all dependencies
+
 #### [1.0.26]
 
 [UPDATED] Internal client log version
