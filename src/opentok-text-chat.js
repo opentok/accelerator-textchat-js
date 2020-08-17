@@ -569,9 +569,12 @@
 
     if (_this.options.alwaysOpen) {
       _initTextChat();
-    } else {
-      _this.options.appendControl && _appendControl()
     }
+
+    if (_this.options.appendControl) {
+      _appendControl();
+    }
+
     _registerEvents();
     _addEventListeners();
   };
@@ -590,7 +593,7 @@
     hideTextChat: function () {
       _hideTextChat();
     },
-    deliverUnsentMessages:function(){
+    deliverUnsentMessages: function () {
       _deliverUnsentMessages();
     }
   };

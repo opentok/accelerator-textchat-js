@@ -1,6 +1,6 @@
 {
   "name": "opentok-text-chat",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "OpenTok text chat accelerator pack",
   "main": "dist/opentok-text-chat.js",
   "directories": {
@@ -8,10 +8,10 @@
   },
   "scripts": {
     "build:css": "npm-css css/theme.css -o dist/theme.css",
-    "build:js": "cp src/opentok-text-chat.js dist/ && uglifyjs src/opentok-text-chat.js -o dist/opentok-text-chat.min.js",
-    "build:logversion": "replace '(js-vsol-)(x.y.z)' '$1'$npm_package_version dist/*",
+    "build:js": "copyfiles src/opentok-text-chat.js dist/ -f && uglifyjs src/opentok-text-chat.js -o dist/opentok-text-chat.min.js",
+    "build:logversion": "replace '(js-vsol-)(x.y.z)' '$1'$npm_package_version ./dist -r",
     "test": "karma start",
-    "build": "mkdir -p dist && npm run build:js & npm run build:css && npm run build:logversion"
+    "build": "mkdir dist && npm run build:js & npm run build:css && npm run build:logversion"
   },
   "repository": {
     "type": "git",
@@ -27,33 +27,33 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.3.0",
+    "copyfiles": "^2.3.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.1.1",
-    "karma": "^0.13.10",
+    "karma": "^5.1.1",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-firefox-launcher": "^0.1.6",
-    "karma-mocha": "^0.2.0",
-    "karma-requirejs": "^0.2.2",
-    "karma-sinon": "^1.0.4",
-    "merge-stream": "^1.0.0",
-    "mocha": "^2.3.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.3",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-requirejs": "^1.1.0",
+    "karma-sinon": "^1.0.5",
+    "merge-stream": "^2.0.0",
+    "mocha": "^8.1.1",
     "npm-css": "^0.2.3",
-    "opentok-one-to-one-communication": "^1.0.6",
-    "replace": "^0.3.0",
-    "rimraf": "^2.4.3",
-    "sinon": "^1.17.0",
-    "uglify-js": "^2.8.15",
-    "yuidocjs": "^0.9.0"
+    "replace": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "sinon": "^9.0.2",
+    "uglify-js": "^3.10.1"
   },
   "dependencies": {
-    "jquery": "^3.1.0",
+    "jquery": "^3.5.1",
     "kuende-livestamp": "^1.1.2",
-    "moment": "^2.14.1",
-    "opentok-solutions-logging": "^1.0.6",
-    "underscore": "^1.8.3"
+    "moment": "^2.27.0",
+    "opentok-solutions-logging": "^1.1.0",
+    "underscore": "^1.10.2"
   }
 }
