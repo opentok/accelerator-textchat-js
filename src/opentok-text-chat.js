@@ -6,6 +6,7 @@
   var _;
   var $;
   var OTKAnalytics;
+  var xss;
 
   if (typeof module === 'object' && typeof module.exports === 'object') {
     /* eslint-disable import/no-unresolved */
@@ -153,9 +154,9 @@
     var bubble = [
       '<div class="' + message.messageClass + '" >',
       '<div class="ots-user-name-initial"> ' + message.username[0] + '</div>',
-      '<div class="ots-item-timestamp"> ' + message.username + ', <span data-livestamp=" ' + new Date(message.time) + '" </span></div>',
+      '<div class="ots-item-timestamp"> ' + xss(message.username) + ', <span data-livestamp=" ' + new Date(message.time) + '" </span></div>',
       '<div class="ots-item-text">',
-      '<span> ' + message.message + '</span>',
+      '<span> ' + xss(message.message) + '</span>',
       '</div>',
       '</div>'
     ].join('\n');
@@ -185,7 +186,7 @@
   var _handleMessageSent = function (data) {
     _cleanComposer();
     if (_shouldAppendMessage(data)) {
-      $('.ots-item-text').last().append(['<span>', data.message, '</span>'].join(''));
+      $('.ots-item-text').last().append(['<span>', xss(data.message), '</span>'].join(''));
       var chatholder = $(_newMessages);
       chatholder[0].scrollTop = chatholder[0].scrollHeight;
     } else {
