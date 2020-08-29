@@ -105,6 +105,20 @@
   };
 
   // Private methods
+  var _escapeHtml = function (string) {
+    var charactersMap = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;'
+    };
+    return (string || '')
+      .toString()
+      .replace(/[<>"']/ig, function (match) {
+        return charactersMap[match];
+      });
+  }
+
   var renderUILayout = function () {
     var deliveryMessage =
       _this.options.waitingMessage || 'Messages will be delivered once your contact arrives';
@@ -117,14 +131,14 @@
       '</div>',
       '<div id="otsChatWrap">',
       '<div class="ots-messages-holder" id="messagesHolder">',
-      '<div class="ots-messages-alert ots-hidden" id="messagesWaiting">' + deliveryMessage + '</div>',
+      '<div class="ots-messages-alert ots-hidden" id="messagesWaiting">' + _escapeHtml(deliveryMessage) + '</div>',
       '<div class="ots-message-item ots-message-sent">',
       '</div>',
       '</div>',
       '<div class="ots-send-message-box">',
-      '<input type="text" maxlength=' + _this.options.limitCharacterMessage + ' class="ots-message-input" placeholder="Enter your message here" id="messageBox">',
+      '<input type="text" maxlength=' + _escapeHtml(_this.options.limitCharacterMessage) + ' class="ots-message-input" placeholder="Enter your message here" id="messageBox">',
       '<button class="ots-icon-check" id="sendMessage" type="submit"></button>',
-      '<div class="ots-character-count"><span><span id="characterCount">0</span>/' + _this.options.limitCharacterMessage + ' characters</span></div>',
+      '<div class="ots-character-count"><span><span id="characterCount">0</span>/' + _escapeHtml(_this.options.limitCharacterMessage) + ' characters</span></div>',
       '</div>',
       '</div>',
       '</div>',
@@ -151,11 +165,11 @@
   var _getBubbleHtml = function (message) {
     /* eslint-disable max-len, prefer-template */
     var bubble = [
-      '<div class="' + message.messageClass + '" >',
-      '<div class="ots-user-name-initial"> ' + message.username[0] + '</div>',
-      '<div class="ots-item-timestamp"> ' + message.username + ', <span data-livestamp=" ' + new Date(message.time) + '" </span></div>',
+      '<div class="' + _escapeHtml(message.messageClass) + '" >',
+      '<div class="ots-user-name-initial"> ' + _escapeHtml(message.username[0]) + '</div>',
+      '<div class="ots-item-timestamp"> ' + _escapeHtml(message.username) + ', <span data-livestamp=" ' + new Date(message.time) + '" </span></div>',
       '<div class="ots-item-text">',
-      '<span> ' + message.message + '</span>',
+      '<span> ' + _escapeHtml(message.message) + '</span>',
       '</div>',
       '</div>'
     ].join('\n');
@@ -185,7 +199,7 @@
   var _handleMessageSent = function (data) {
     _cleanComposer();
     if (_shouldAppendMessage(data)) {
-      $('.ots-item-text').last().append(['<span>', data.message, '</span>'].join(''));
+      $('.ots-item-text').last().append(['<span>', _escapeHtml(data.message), '</span>'].join(''));
       var chatholder = $(_newMessages);
       chatholder[0].scrollTop = chatholder[0].scrollHeight;
     } else {
@@ -358,7 +372,7 @@
     var data = JSON.parse(signal.data);
 
     if (_shouldAppendMessage(data)) {
-      $('.ots-item-text').last().append(['<span>', data.text, '</span>'].join(''));
+      $('.ots-item-text').last().append(['<span>', _escapeHtml(data.text), '</span>'].join(''));
     } else {
       _renderChatMessage(data.sender.id, data.sender.alias, data.text, data.sentOn);
     }
