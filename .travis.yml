@@ -3,6 +3,9 @@ node_js:
 - '10.16'
 services:
 - xvfb
+branches:
+  only: 
+    - master
 before_script:
 - npm install
 - npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage
