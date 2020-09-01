@@ -2,5 +2,10 @@ node_modules
 .idea/
 dist/
 
+test/coverage
+
+package-lock.json
+debug.log
+
 # OSX files
 .DS_Store

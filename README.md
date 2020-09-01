@@ -86,6 +86,7 @@ The following `options` fields are used in the `TextChatAccPack` constructor:
 | Set the maximum message length.                                                                       | `limitCharacterMessage` |
 | Set the sender alias and the sender ID of the outgoing messages.                                      | `sender`                |
 | Set the text chat container to automatically be displayed.                                            | `alwaysOpen`            |
+| Set the chat button to be added to UI or not                                                          | `appendControl`         |
 | Custom message to display while waiting for other users to join.                                      | `waitingMessage`        |
 
 If you're using a bundler like webpack or Browserify, you can install the the text chat component with [npm](https://www.npmjs.com/package/opentok-text-chat), and import into your application:
@@ -107,7 +108,8 @@ Otherwise, the package will need to be in `global` scope to be initialized:
    limitCharacterMessage: 160,
    controlsContainer: '#feedControls',
    textChatContainer: '#chatContainer',
-   alwaysOpen: true
+   alwaysOpen: true,
+   appendControl: true
  };
 
  const textChat = new TextChatAccPack(textChatOptions);
