@@ -6,7 +6,7 @@ services:
 branches:
   only: 
     - master
-    - /v\d+\.\d+[a-z]/
+    - /v\d+\.\d+.\d+
 before_script:
 - npm install
 - npm install --save-dev chai karma karma-chai karma-chrome-launcher karma-coverage
