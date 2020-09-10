@@ -18,8 +18,8 @@ script:
 - npm test
 - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
     VERSION=$(jq '.version' package.json | sed -e 's/^"//' -e 's/"$//');
-    git commit -m "New build. Bump npm version." --allow-empty;
     git tag v$VERSION;
+    git commit -m "New build. Bump npm version to $VERSION" --allow-empty;
     git push --quiet https://$GITHUBKEY@github.com/opentok/accelerator-textchat-js v$VERSION;
   fi
 deploy:

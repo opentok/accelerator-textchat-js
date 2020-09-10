@@ -1,6 +1,6 @@
 {
   "name": "opentok-text-chat",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "description": "OpenTok text chat accelerator pack",
   "main": "dist/opentok-text-chat.js",
   "directories": {
@@ -9,7 +9,7 @@
   "scripts": {
     "build:css": "npm-css css/theme.css -o dist/theme.css",
     "build:js": "copyfiles src/opentok-text-chat.js dist/ -f && uglifyjs src/opentok-text-chat.js -o dist/opentok-text-chat.min.js",
-    "build:logversion": "replace '(js-vsol-)(x.y.z)' '$1'$npm_package_version ./dist -r",
+    "build:logversion": "replace-in-file /x.y.z/ $npm_package_version ./dist/*.js --isRegex --verbose",
     "test": "karma start",
     "build": "mkdir dist && npm run build:js & npm run build:css && npm run build:logversion"
   },
@@ -28,11 +28,11 @@
   "devDependencies": {
     "chai": "^3.3.0",
     "copyfiles": "^2.3.0",
-    "eslint": "^2.10.2",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.8.0",
-    "eslint-plugin-jsx-a11y": "^1.2.0",
-    "eslint-plugin-react": "^5.1.1",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
     "karma": "^5.2.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
@@ -44,10 +44,10 @@
     "merge-stream": "^2.0.0",
     "mocha": "^8.1.3",
     "npm-css": "^0.2.3",
-    "replace": "^1.2.0",
+    "replace-in-file": "^6.1.0",
     "rimraf": "^3.0.2",
     "sinon": "^9.0.2",
-    "uglify-js": "^3.10.3"
+    "uglify-js": "^3.10.4"
   },
   "dependencies": {
     "jquery": "^3.5.1",
