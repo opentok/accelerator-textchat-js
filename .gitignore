@@ -1,11 +1,8 @@
+./node_modules
+./test/coverage
 node_modules
-.idea/
-dist/
-
-test/coverage
-
-package-lock.json
-debug.log
-
-# OSX files
-.DS_Store
+npm-debug.log
+dist
+browser
+coverage
+.nyc_output

@@ -1,5 +1,4 @@
+.babelrc
 node_modules
-.idea/
-
-# OSX files
-.DS_Store
+test/coverage
+npm-debug.log
