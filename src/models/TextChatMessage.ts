@@ -5,6 +5,6 @@ export class TextChatMessage {
     public messageClass: string,
     public message: string,
     public time: string,
-    public recipient?: string
+    public recipient?: OT.Connection
   ) {}
 }

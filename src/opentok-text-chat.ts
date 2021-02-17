@@ -1,5 +1,5 @@
 import { OTError } from '@opentok/client';
-import { AccCore, LogVariation } from 'opentok-accelerator-core';
+import { AccCore, LogVariation, ExtendedOTSession, StreamEvent, CoreEvents, OpenTokEvents, Communication } from 'opentok-accelerator-core';
 import OTKAnalytics from 'opentok-solutions-logging';
 import { LogAction, TextChatEvents } from './enums';
 import { OpenTokSignal, TextChatError, TextChatMessage, TextChatOptions } from './models';
@@ -7,11 +7,9 @@ import { OpenTokSignal, TextChatError, TextChatMessage, TextChatOptions } from '
 export default class TextChatAccPack {
   private accCore: AccCore;
   private analytics: OTKAnalytics;
-  private session: OT.Session;
+  private session: ExtendedOTSession;
 
-  private waitingMessage: string;
-  private limitCharacterMessage: number;
-  private textChatContainer: string;
+  private options: TextChatOptions;
 
   private composer: HTMLInputElement;
   private newMessages: HTMLElement;
@@ -20,48 +18,87 @@ export default class TextChatAccPack {
 
   private sender;
   private lastMessage?: TextChatMessage;
-  private futureMessageNotice: boolean = false;
+  private displayed: boolean;
+  private enabled: boolean;
+  private initialized: boolean;
+  private controlAdded: boolean;
+  private futureMessageNotice: Boolean;
   private sentMessageHistory: TextChatMessage[] = [];
-  private remoteParticipant: boolean = false;
+  private remoteParticipant: boolean;
 
   constructor(options: TextChatOptions) {
-    this.accCore = options.core;
-    this.session = options.session;
-    this.waitingMessage = options.waitingMessage;
-    this.limitCharacterMessage = options.limitCharacterMessage;
-    this.textChatContainer = options.textChatContainer;
+    // Validate provided options
+    this.validateOptions(options);
 
+    // Init the analytics logs
     this.initializeAnalytics();
+
+    if (options.limitCharacterMessage) {
+      this.log(LogAction.setMaxLength, LogVariation.success);
+    }
+
+    if (options.alwaysOpen) {
+      this.initTextChat();
+    }
+
+    if (options.appendControl) {
+      this.appendControl();
+    }
+
+    this.registerEvents();
+    this.addEventListeners();
   }
+
+  isDisplayed() {
+    return this.displayed;
+  }
+
+  isEnabled() {
+    return this.enabled;
+  }
+
+  showTextChat() {
+    this.openTextChat();
+  }
+
+  hideTextChat() {
+    this.closeTextChat();
+  }
+
+  deliverUnsentMessages() {
+    this.sendUnsentMessages();
+  }
+
+  /** PRIVATE METHODS **/
 
   /**
    * Logs events with OTAnalytics
    * @param action Event to log
    * @param variation Data to log
    */
-  log(action, variation): void {
+  private log(action, variation): void {
     const data = {
       action: action,
       variation: variation
     };
     this.analytics.logEvent(data);
-  };
+  }
 
   /**
    * Triggers an event in the Accelerator Core
    * @param event Event triggered
    * @param data Payload to send with event
    */
-  triggerEvent(event: string, data: unknown): void {
+  private triggerEvent(event: string, data?: unknown): void {
     this.accCore && this.accCore.triggerEvent(event, data);
-  };
+  }
 
   /**
    * Sends a message to the session or optionally a specific recipient
    * @param message Text message to send
    * @param recipient OpenTok connection of a recipient
    */
-  async sendTextMessage(message: string, recipient?: OT.Connection): Promise<void> {
+  private async sendTextMessage(message: string, recipient?: OT.Connection): Promise<void> {
     if (message && message.length > 0) {
 
       try {
@@ -76,19 +113,17 @@ export default class TextChatAccPack {
         this.handleMessageError(error);
       }
     }
-  };
-
-  /**** PRIVATE METHODS ****/
+  }
 
   private initializeAnalytics(): void {
     // init the analytics logs
     const _source = window.location.href;
 
     const otAnalyticsData: Analytics.ConstructorConfig = {
-      clientVersion: _logEventData.clientVersion,
+      clientVersion: LogVariation.clientVersion,
       source: _source,
-      componentId: _logEventData.componentId,
-      name: _logEventData.name
+      componentId: LogVariation.componentId,
+      name: LogVariation.name
     };
 
     this.analytics = new OTKAnalytics(otAnalyticsData);
@@ -96,11 +131,11 @@ export default class TextChatAccPack {
     const sessionInfo: Analytics.SessionInfo = {
       sessionId: this.session.sessionId,
       connectionId: this.session.connection.connectionId,
-      partnerId: _session.apiKey
+      partnerId: this.session.apiKey
     };
 
     this.analytics.addSessionInfo(sessionInfo);
-  };
+  }
 
   private escapeHtml (text: string): string {
     const charactersMap = {
@@ -112,7 +147,7 @@ export default class TextChatAccPack {
     return (text || '').toString().replace(/[<>"']/gi, function (match) {
       return charactersMap[match];
     });
-  };
+  }
 
   private renderUILayout(): string {
     return `
@@ -124,24 +159,24 @@ export default class TextChatAccPack {
           <div id="otsChatWrap">
             <div class="ots-messages-holder" id="messagesHolder">
               <div class="ots-messages-alert ots-hidden" id="messagesWaiting">
-                ${this.escapeHtml(this.waitingMessage)}
+                ${this.escapeHtml(this.options.waitingMessage)}
               </div>
               <div class="ots-message-item ots-message-sent"></div>
             </div>
             <div class="ots-send-message-box">
-              <input type="text" maxlength="${this.limitCharacterMessage}"
+              <input type="text" maxlength="${this.options.limitCharacterMessage}"
                 class="ots-message-input" placeholder="Enter your message here" id="messageBox">
               <button class="ots-icon-check" id="sendMessage" type="submit"></button>
               <div class="ots-character-count">
                 <span>
-                  <span id="characterCount">0</span>/${this.limitCharacterMessage} characters
+                  <span id="characterCount">0</span>/${this.options.limitCharacterMessage} characters
                 </span>
               </div>
             </div>
           </div>
         </div>
       </div>`;
-  };
+  }
 
   private getBubbleHtml(message: TextChatMessage, isFailedMessage: boolean = false): string {
     return `
@@ -160,7 +195,7 @@ export default class TextChatAccPack {
         </div>
       </div>
     `;
-  };
+  }
 
   private setupUI(): void {
 
@@ -168,7 +203,7 @@ export default class TextChatAccPack {
     this.log(LogAction.initialize, LogVariation.attempt);
 
     const parent =
-      document.querySelector(this.textChatContainer) || document.body;
+      document.querySelector(this.options.textChatContainer) || document.body;
 
     const chatView = document.createElement('section');
     chatView.innerHTML = this.renderUILayout();
@@ -204,7 +239,7 @@ export default class TextChatAccPack {
 
     // Add INITIALIZE success log event
     this.log(LogAction.initialize, LogVariation.success);
-  };
+  }
 
   private renderChatMessage(textChatMessage: TextChatMessage, isFailedMessage: boolean = false): void {
 
@@ -223,19 +258,15 @@ export default class TextChatAccPack {
     }
 
     this.newMessages.scrollTop = this.newMessages.scrollHeight;
-  };
+  }
 
   private handleMessageSent(sentMessage: TextChatMessage): void {
-
     this.sentMessageHistory.push(sentMessage);
-
     this.cleanComposer();
-
     this.renderChatMessage(sentMessage);
     this.lastMessage = sentMessage;
-
     this.triggerEvent(TextChatEvents.MessageSent, sentMessage);
-  };
+  }
 
   private shouldAppendMessage = (receivedMessage: TextChatMessage): boolean =>
      this.lastMessage && this.lastMessage.senderId === receivedMessage.senderId;
@@ -243,28 +274,28 @@ export default class TextChatAccPack {
   private cleanComposer(): void {
     this.composer.value = '';
     this.characterCount.innerText = '0';
-  };
+  }
 
   private handleMessageError(error: TextChatError): void {
     // Add an error message to the message view
     // that is standardized as far as classes
     this.renderChatMessage(error.textChatMessage, true);
     this.triggerEvent(TextChatEvents.ErrorSendingMessage, error);
-  };
+  }
 
   private showWaitingMessage(): void {
     const el = document.getElementById('messagesWaiting');
     el && el.classList.remove('ots-hidden');
     const parent = document.getElementById('messagesHolder');
     parent && parent.classList.add('has-alert');
-  };
+  }
 
   private hideWaitingMessage(): void {
     const el = document.getElementById('messagesWaiting');
     el && el.classList.add('ots-hidden');
     const parent = document.getElementById('messagesHolder');
     parent && parent.classList.add('has-alert');
-  };
+  }
 
   private sendMessage = async (message: string, recipient?: OT.Connection): Promise<TextChatMessage> => {
 
@@ -300,10 +331,10 @@ export default class TextChatAccPack {
         return textChatMessage;
       }
     );
-  };
+  }
 
-  private onIncomingMessage(signal: OpenTokSignal): void {
-
+  private onIncomingMessage(event: any): void {
+    const signal = event.target as OpenTokSignal;
     const me = this.session.connection.connectionId;
     const from = signal.from.connectionId;
     if (from !== me) {
@@ -318,12 +349,174 @@ export default class TextChatAccPack {
     }
   }
 
-  private deliverUnsentMessages(): void {
-    this.sentMessageHistory.forEach(function (message: TextChatMessage) {
-      this.sendMessage(message.recipient, message.message);
+  private sendUnsentMessages(): void {
+    this.sentMessageHistory.forEach((message: TextChatMessage) => {
+      this.sendMessage(message.message, message.recipient);
     });
     this.sentMessageHistory = [];
+  }
+
+  private openTextChat() {
+    this.log(LogAction.open, LogVariation.attempt);
+    document
+      .querySelector(this.options.textChatContainer)
+      .classList.remove('ots-hidden');
+    this.displayed = true;
+    this.triggerEvent(TextChatEvents.ShowTextChat);
+
+    // Add OPEN success log event
+    this.log(LogAction.open, LogVariation.success);
+  }
+
+  private initTextChat() {
+    this.log(LogAction.start, LogVariation.attempt);
+    this.enabled = true;
+    this.displayed = true;
+    this.initialized = true;
+    this.setupUI();
+    this.triggerEvent(TextChatEvents.ShowTextChat);
+    this.session.on('signal:text-chat', this.onIncomingMessage);
+    this.log(LogAction.start, LogVariation.success);
+  }
+
+  private closeTextChat() {
+    this.log(LogAction.close, LogVariation.attempt);
+    this.log(LogAction.end, LogVariation.attempt);
+    document
+      .querySelector(this.options.textChatContainer)
+      .classList.add('ots-hidden');
+    this.displayed = false;
+    this.triggerEvent(TextChatEvents.HideTextChat);
+
+    // Add CLOSE success log event
+    this.log(LogAction.close, LogVariation.success);
+    this.log(LogAction.end, LogVariation.success);
+  }
+
+  private registerEvents() {
+    const events = Object.values(TextChatEvents);
+    if (this.accCore) {
+      this.accCore.registerEvents(events);
+    }
+  }
+
+  private handleConnectionCreated(event: OT.Event<"connectionCreated", OT.Session> & { connection: OT.Connection; }) {
+    if (
+      event &&
+      event.connection.connectionId !== this.session.connection.connectionId
+    ) {
+      this.remoteParticipant = true;
+      this.hideWaitingMessage();
+    }
+  }
+
+  private handleStreamCreated(event: OT.Event<"streamCreated", OT.Session> & { stream: OT.Stream; }) {
+    if (
+      event &&
+      event.stream.connection.connectionId !== this.session.connection.connectionId
+    ) {
+      this.remoteParticipant = true;
+      this.hideWaitingMessage();
+    }
+  }
+
+  private handleStreamDestroyed() {
+    if (this.session.streams.length < 2) {
+      this.remoteParticipant = false;
+    }
+  }
+
+  private appendControl() {
+    const feedControls = document.querySelector(
+      this.options.controlsContainer as string
+    );
+
+    const el = document.createElement('div');
+    const enableTextChat = document.createElement('div');
+    enableTextChat.classList.add('ots-video-control', 'circle', 'text-chat', 'enabled');
+    enableTextChat.id = 'enableTextChat';
+    el.appendChild(enableTextChat);
+
+    feedControls.appendChild(enableTextChat);
+
+    this.controlAdded = true;
+
+    enableTextChat.onclick = () => {
+      if (!this.initialized) {
+        this.initTextChat();
+      } else if (!this.displayed) {
+        this.openTextChat();
+      } else {
+        this.closeTextChat();
+      }
+    };
   };
+
+  private uniqueString(length?: number): string {
+    const len = length || 3;
+    return Math.random().toString(36).substr(2, len);
+  };
+
+  private validateOptions(options: TextChatOptions): void {
+    if (!options.session) {
+      throw new Error(
+        'Text Chat Accelerator Pack requires an OpenTok session.'
+      );
+    }
+
+    this.session = options.session;
+    this.accCore = options.core;
+
+    /**
+     * Create arbitrary values for sender id and alias if not received
+     * in options hash.
+     */
+    this.sender = options.sender || {
+      id: `${this.uniqueString()}${this.session.sessionId}${this.uniqueString()}`,
+      alias: `User${this.uniqueString()}`
+    }
+
+    this.options = options;
+  }
+
+  private addEventListeners() {
+    if (this.accCore) {
+      this.accCore.on(OpenTokEvents.StreamCreated,this.handleStreamCreated);
+      this.accCore.on(OpenTokEvents.StreamDestroyed, this.handleStreamDestroyed);
+
+      this.accCore.on(CommunicationEvents.StartCall, function () {
+        if (!this.options.alwaysOpen) {
+          if (this.controlAdded) {
+            document
+              .querySelector('#enableTextChat')
+              .classList.remove('ots-hidden');
+          } else {
+            this.options.appendControl && this.appendControl();
+          }
+        }
+      });
+
+      this.accCore.on(CommunicationEvents.EndCall, function () {
+        if (!this.alwaysOpen) {
+          document.getElementById('enableTextChat').classList.add('ots-hidden');
+          if (this.displayed) {
+            this.closeTextChat();
+          }
+        }
+      });
+    } else {
+      this.session.on(OpenTokEvents.StreamCreated, this.handleStreamCreated);
+      this.session.on(OpenTokEvents.StreamDestroyed, this.handleStreamDestroyed);
+    }
+
+    this.session.on('connectionCreated', this.handleConnectionCreated);
+
+    /**
+     * We need to check for remote participants in case we were the last party to join and
+     * the session event fired before the text chat component was initialized.
+     */
+    this.handleStreamCreated();
+  }
 
 }
 
@@ -359,7 +552,7 @@ export default class TextChatAccPack {
   /** Analytics */
   let _otkanalytics;
 
-  const _logEventData = {
+  const LogVariation = {
     // vars for the analytics logs. Internal use
     componentId: 'textChatAccPack',
     name: 'guidTextChatAccPack',
@@ -372,9 +565,6 @@ export default class TextChatAccPack {
   /** End Analytics */
 
   // State vars
-  let _enabled = false;
-  let _displayed = false;
-  let _initialized = false;
   let _controlAdded = false;
 
   // Reference to Accelerator Pack Common Layer
@@ -394,227 +584,13 @@ export default class TextChatAccPack {
 
 
 
-  const _initTextChat = function () {
-    _log(_logEventData.actionStart, _logEventData.variationAttempt);
-    _enabled = true;
-    _displayed = true;
-    _initialized = true;
-    _setupUI();
-    _triggerEvent('showTextChat');
-    _session.on('signal:text-chat', _handleTextChat);
-    _log(_logEventData.actionStart, _logEventData.variationSuccess);
-  };
 
-  const _showTextChat = function () {
-    _log(_logEventData.actionOpen, _logEventData.variationAttempt);
-    document
-      .querySelector(_this.options.textChatContainer)
-      .classList.remove('ots-hidden');
-    _displayed = true;
-    _triggerEvent('showTextChat');
 
-    // Add OPEN success log event
-    _log(_logEventData.actionOpen, _logEventData.variationSuccess);
-  };
 
-  const _hideTextChat = function () {
-    _log(_logEventData.actionClose, _logEventData.variationAttempt);
-    _log(_logEventData.actionEnd, _logEventData.variationAttempt);
-    document
-      .querySelector(_this.options.textChatContainer)
-      .classList.add('ots-hidden');
-    _displayed = false;
-    _triggerEvent('hideTextChat');
-
-    // Add CLOSE success log event
-    _log(_logEventData.actionClose, _logEventData.variationSuccess);
-    _log(_logEventData.actionEnd, _logEventData.variationSuccess);
-  };
-
-  const _appendControl = function () {
-    const feedControls = document.querySelector(
-      _this.options.controlsContainer
-    );
-
-    const el = document.createElement('div');
-    el.innerHTML =
-      '<div class="ots-video-control circle text-chat enabled" id="enableTextChat"></div>';
-
-    const enableTextChat = el.firstChild;
-    feedControls.appendChild(enableTextChat);
-
-    _controlAdded = true;
-
-    enableTextChat.onclick = function () {
-      if (!_initialized) {
-        _initTextChat();
-      } else if (!_displayed) {
-        _showTextChat();
-      } else {
-        _hideTextChat();
-      }
-    };
-  };
-
-  const _validateOptions = function (options) {
-    if (!options.session) {
-      throw new Error(
-        'Text Chat Accelerator Pack requires an OpenTok session.'
-      );
-    }
-
-    // Generates a random alpha-numeric string of n length
-    const uniqueString = function (length) {
-      const len = length || 3;
-      return Math.random().toString(36).substr(2, len);
-    };
-
-    // Returns session id prepended and appended with unique strings
-    const generateUserId = function () {
-      return [uniqueString(), _session.id, uniqueString()].join('');
-    };
-
-    _session = _.property('session')(options);
-    _accPack = _.property('accPack')(options);
-
-    /**
-     * Create arbitary values for sender id and alias if not recieved
-     * in options hash.
-     */
-    _sender = _.defaults(options.sender || {}, {
-      id: generateUserId(),
-      alias: ['User', uniqueString()].join(' ')
-    });
-
-    return _.defaults(_.omit(options, ['accPack', '_sender']), {
-      limitCharacterMessage: 160,
-      controlsContainer: '#feedControls',
-      textChatContainer: '#chatContainer',
-      alwaysOpen: false,
-      appendControl: true
-    });
-  };
-
-  const _registerEvents = function () {
-    const events = [
-      'showTextChat',
-      'hideTextChat',
-      'messageSent',
-      'errorSendingMessage',
-      'messageReceived'
-    ];
-    _accPack && _accPack.registerEvents(events);
-  };
-
-  const _handleConnectionCreated = function (event) {
-    if (
-      event &&
-      event.connection.connectionId !== _session.connection.connectionId
-    ) {
-      _remoteParticipant = true;
-      _hideWaitingMessage();
-    }
-  };
-
-  const _handleStreamCreated = function (event) {
-    if (
-      event &&
-      event.stream.connection.connectionId !== _session.connection.connectionId
-    ) {
-      _remoteParticipant = true;
-      _hideWaitingMessage();
-    }
-  };
-
-  const _handleStreamDestroyed = function () {
-    if (_session.streams.length() < 2) {
-      _remoteParticipant = false;
-    }
-  };
-
-  const _addEventListeners = function () {
-    if (_accPack) {
-      _accPack.registerEventListener('streamCreated', _handleStreamCreated);
-      _accPack.registerEventListener('streamDestroyed', _handleStreamDestroyed);
-
-      _accPack.registerEventListener('startCall', function () {
-        if (!_this.options.alwaysOpen) {
-          if (_controlAdded) {
-            document
-              .querySelector('#enableTextChat')
-              .classList.remove('ots-hidden');
-          } else {
-            _this.options.appendControl && _appendControl();
-          }
-        }
-      });
-
-      _accPack.registerEventListener('endCall', function () {
-        if (!_this.options.alwaysOpen) {
-          document.getElementById('enableTextChat').classList.add('ots-hidden');
-          if (_displayed) {
-            _hideTextChat();
-          }
-        }
-      });
-    } else {
-      _session.on('streamCreated', _handleStreamCreated);
-      _session.on('streamDestroyed', _handleStreamDestroyed);
-    }
-
-    _session.on('connectionCreated', _handleConnectionCreated);
-
-    /**
-     * We need to check for remote participants in case we were the last party to join and
-     * the session event fired before the text chat component was initialized.
-     */
-    _handleStreamCreated();
-  };
-
-  // Constructor
-  const TextChatAccPack = function (options) {
-    // Save a reference to this
-    _this = this;
-
-    // Extend instance and set private vars
-    _this.options = _validateOptions(options);
-
-    // Init the analytics logs
-    _logAnalytics();
-
-    if (_.property('_this.options.limitCharacterMessage')(options)) {
-      _log(_logEventData.actionSetMaxLength, _logEventData.variationSuccess);
-    }
-
-    if (_this.options.alwaysOpen) {
-      _initTextChat();
-    }
-
-    if (_this.options.appendControl) {
-      _appendControl();
-    }
-
-    _registerEvents();
-    _addEventListeners();
-  };
 
   TextChatAccPack.prototype = {
     constructor: TextChatAccPack,
-    isEnabled: function () {
-      return _enabled;
-    },
-    isDisplayed: function () {
-      return _displayed;
-    },
-    showTextChat: function () {
-      _showTextChat();
-    },
-    hideTextChat: function () {
-      _hideTextChat();
-    },
-    deliverUnsentMessages: function () {
-      _deliverUnsentMessages();
-    }
+
   };
 
   if (typeof exports === 'object') {
