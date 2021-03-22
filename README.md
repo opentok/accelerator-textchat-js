@@ -1,6 +1,6 @@
 # OpenTok Accelerator TextChat for JavaScript
 
-[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=master)](https://travis-ci.org/opentok/accelerator-textchat-js) 
+[![Build Status](https://travis-ci.org/opentok/accelerator-textchat-js.svg?branch=main)](https://travis-ci.org/opentok/accelerator-textchat-js) 
 [![npm](https://img.shields.io/npm/v/opentok-text-chat.svg)](https://www.npmjs.com/package/opentok-text-chat) 
 [![license MIT](https://img.shields.io/github/license/opentok/accelerator-textchat-js.svg)](./.github/LICENSE)
 
