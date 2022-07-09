@@ -52,7 +52,7 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "kuende-livestamp": "^1.1.2",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "opentok-solutions-logging": "^1.1.0",
     "underscore": "^1.11.0"
   }
