@@ -54,6 +54,6 @@
     "kuende-livestamp": "^1.1.2",
     "moment": "^2.27.0",
     "opentok-solutions-logging": "^1.1.0",
-    "underscore": "^1.11.0"
+    "underscore": "^1.13.8"
   }
 }
