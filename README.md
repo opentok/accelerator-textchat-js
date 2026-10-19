@@ -6,6 +6,8 @@
 
 <img src="https://assets.tokbox.com/img/vonage/Vonage_VideoAPI_black.svg" height="48px" alt="Tokbox is now known as Vonage" />
 
+> ⚠️ This repository is deprecated and will no longer receive meaningful updates. For new projects and migrations, we recommend using the [Vonage Video React reference application](https://github.com/Vonage/vonage-video-react-app).
+
 The OpenTok Text Chat Accelerator Pack for JavaScript provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices.
 
 ## Quick start
